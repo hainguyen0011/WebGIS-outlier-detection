@@ -1,0 +1,282 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    font-family: sans-serif;
+}
+
+.hidden {
+    display: none;
+}
+
+.grid-container {
+    display: grid;
+    /*grid-template-columns: 3.5% 96.5%;*/
+    grid-template-rows: 100vh;
+}
+
+.btn-home-container {
+    width: 100%;
+    height: 100%;
+    display: block;
+    text-align: center;
+    background-color: #133267;
+    /*padding: 10px;*/
+    /*color: white;*/
+    /*z-index: 1;*/
+}
+
+.open-btn {
+    /*display: block;*/
+    z-index: 1;
+    font-size: 22px;
+    font-weight: lighter;
+    background-color: rgba(244, 147, 1, 0.6);
+    color: #F5F5F5;
+    border: none;
+    /*width: 100%;*/
+    width: 30px;
+    height: 30px;
+    position: fixed;
+    cursor: pointer;
+    margin-top: 65px;
+    margin-left: 7px;
+    /*height: 10px;*/
+}
+
+.open-btn:hover {
+    background-color: rgba(244, 147, 1, 0.9);
+}
+
+.grid-menu-container {
+    width: 0;
+    background-color: white;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    transition: 0.5s;
+    overflow: auto;
+    height: 100%;
+}
+
+.header-title {
+    font-size: 22px;
+    margin: 3px;
+}
+
+.header {
+    justify-self: center;
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+
+.cls-btn {
+    font-size: 26px;
+    position: absolute;
+    top: 0;
+    right: 8px;
+    font-family: Lato, sans-serif;
+}
+
+#reset-btn {
+    margin-left: 10px;
+    background-color: #F49301;
+    color: #F5F5F5;
+    border: none;
+    font-size: 15px;
+    padding: 3px;
+    font-weight: bold;
+}
+
+.cls-btn:hover {
+    cursor: pointer;
+}
+
+.logo {
+    margin-top: 5px;
+}
+
+.content {
+    display: grid;
+    font-size: 15px;
+    padding: 8px;
+}
+
+
+#my-table {
+    width: 100%;
+    /*overflow: auto;*/
+    /*position: relative;*/
+}
+
+.table-header {
+    padding: 8px;
+    text-align: center;
+}
+
+.first-column {
+    padding: 8px;
+    text-align: center;
+}
+
+.first-column-outlier {
+    padding: 8px;
+    text-align: center;
+}
+
+#my-table th {
+    position: sticky;
+    top: 0;
+    background-color: #1b4792;
+    color: aliceblue;
+
+}
+
+#my-input {
+    margin-bottom: 10px;
+    width: 30rem;
+}
+
+#my-input-outlier {
+    margin-bottom: 10px;
+}
+
+.table-container {
+    overflow: auto;
+    width: 48rem;
+    height: 350px;
+    border-left: 1px solid black;
+}
+
+.outlier-table-container {
+    overflow: auto;
+    width: 100%;
+    height: 290px;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #555;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #333;
+}
+
+#header2 {
+    cursor: pointer;
+}
+
+#header1 {
+    cursor: pointer;
+}
+
+table, td, th {
+    border-collapse: collapse;
+    border: 1px solid #222222;
+}
+
+td, th {
+    /*border: 1px solid #dddddd;*/
+    text-align: center;
+    padding: 6px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+    border: 1px solid #ffffff;
+}
+
+.outlier-table-container {
+    margin-bottom: 20px;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+}
+
+.outlier-table-container table {
+    table-layout: auto;
+    width: 100%;
+}
+
+.trajline {
+    cursor: pointer;
+}
+
+.outlier {
+    cursor: pointer;
+}
+
+#title {
+    text-align: center;
+    margin-bottom: 5px;
+    margin-top: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.table-container {
+    border-bottom: 1px solid black;
+    border-top: 1px solid #1b4792;
+}
+
+#my-outlier-table th {
+    position: sticky;
+    top: 0;
+    background-color: #BF0603;
+    color: aliceblue;
+}
+
+.map-container {
+    height: 100%;
+    width: 100%;
+    /*top: 0;*/
+    /*position: fixed;*/
+}
+
+.map {
+    /*position: relative;*/
+    height: 100%;
+    width: 100%;
+    /*transform: scale(0.8);*/
+    /*transform-origin: top right;*/
+}
+
+#popup-head {
+    display: block;
+    background-color: #39d365;
+    padding: 5px;
+    width: auto;
+    height: 30px;
+    margin: 0;
+    font-weight: bold;
+    visibility: hidden;
+}
+
+#popup-tail {
+    display: block;
+    background-color: #ea3457;
+    padding: 5px;
+    width: auto;
+    height: 30px;
+    margin: 0;
+    font-weight: bold;
+    visibility: hidden;
+}

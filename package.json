@@ -1,0 +1,8 @@
+{
+  "name": "flaskProject",
+  "version": "1.0.0",
+  "dependencies": {
+    "ol": "^6.4.3",
+    "pg": "^8.5.1"
+  }
+}

@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% block title %}Web Mapping{% endblock %}
+{% block body %}
+    <div class='popup-container'>
+        <p id='popup-head'></p>
+        <p id='popup-tail'></p>
+    </div>
+    {#    <div class='popup-container'>#}
+    {#    </div>#}
+    <div id="side-menu" class="grid-menu-container">
+        <div class="header">
+            <p class="cls-btn">
+                <img src="{{ url_for('static', filename='images/cancel.png') }}" alt="cancel">
+            </p>
+            <img class="logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="logo">
+            <p class="header-title">
+                {#                    Thực tập tốt nghiệp <br><br>#}
+                Phát hiện các bất thường trong dữ liệu GPS log
+            </p>
+        </div>
+
+        <div class="content">
+            <div class="grid-container-all-trajline">
+                <p id="title">Bảng chứa tất cả các lộ trình</p>
+                <div style="margin-bottom: 5px; margin-top: 10px;">
+                    <input id="my-input" placeholder="Search..." type="text">
+                    <input id="reset-btn" type="button" value="Reset view">
+                </div>
+                <div class="table-container">
+                    <table id="my-table">
+                        <thead>
+                        <tr>
+                            <th>
+                                <label style="margin-top: 5px;display:block ;text-align: center;"
+                                       for="select-all"><input
+                                        id="select-all" type="checkbox"></label>
+                            </th>
+                            <th class="table-header">trajline_id</th>
+                            <th class="table-header">start_address</th>
+                            <th class="table-header">end_address</th>
+                            <th class="table-header" id="header1">start_time</th>
+                            <th class="table-header" id="header2">end_time</th>
+                            <th class="hidden">lat_head</th>
+                            <th class="hidden">lon_head</th>
+                            <th class="hidden">lat_tail</th>
+                            <th class="hidden">lon_tail</th>
+                        </tr>
+                        </thead>
+                        <tbody id="body-content">
+                        {% for item in list %}
+                            <tr>
+                                <td class="first-column"><label><input type="checkbox"
+                                                                       value="{{ item.trajline_id }}"></label>
+                                </td>
+                                <td id="{{ item.trajline_id }}" class="trajline">
+                                    trajline_{{ item.trajline_id }}</td>
+                                <td>{{ item.address_head }}</td>
+                                <td>{{ item.address_tail }}</td>
+                                <td>{{ item.start_time }}</td>
+                                <td>{{ item.end_time }}</td>
+                                <td id="lat_head{{ item.trajline_id }}" class="hidden">{{ item.lat_head }}</td>
+                                <td id="lon_head{{ item.trajline_id }}" class="hidden">{{ item.lon_head }}</td>
+                                <td id="lat_tail{{ item.trajline_id }}" class="hidden">{{ item.lat_tail }}</td>
+                                <td id="lon_tail{{ item.trajline_id }}" class="hidden">{{ item.lon_tail }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style="margin-top: 8px;">
+                    <label for="show-head-tail">
+                        <input id="show-head-tail" type="checkbox"> show start and finish
+                    </label>
+                </div>
+
+            </div>
+            <div class="grid-container-outlier">
+                <br><br>
+                <p id="title" style="border-top: 1px solid black; padding-top: 5px;">Bảng chứa lộ trình có
+                    bất thường</p>
+                <div style="margin-bottom: 5px; margin-top: 10px;">
+                    <label id="my-input-outlier" for="my-input-outlier"></label><input id="my-input-outlier"
+                                                                                       type="text"
+                                                                                       placeholder="Search for outlier...">
+                </div>
+                <div class="outlier-table-container">
+                    <table id="my-outlier-table">
+                        <thead>
+                        <tr>
+                            <th>
+                                <label style="margin-top: 5px;display:block ;text-align: center;"
+                                       for="all-outlier"><input
+                                        id="all-outlier"
+                                        type="checkbox"></label>
+
+                            </th>
+                            <th class="table-header">outlier_id</th>
+                            <th class="table-header">trajline_id</th>
+                        </tr>
+                        </thead>
+                        <tbody id="body-outlier">
+                        {% for outlier in outliers %}
+                            {% if outlier.trajline_id < list|length %}
+                                <tr>
+                                    <td class="first-column-outlier"><label><input type="checkbox"
+                                                                                   value="{{ outlier.outlier_id }}"></label>
+                                    </td>
+                                    <td {# id="{{ outlier.outlier_id }}" #} {# class="outlier" #}>
+                                        outlier_{{ outlier.outlier_id }}
+                                    </td>
+                                    <td>
+                                        trajline_{{ outlier.trajline_id }}
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button data-toggle="tooltip" data-placement="bottom" title="Menu" class="open-btn">☰</button>
+    {#    <div class="btn-home-container">#}
+    {#    </div>#}
+    <div class="grid-container">
+        <div class="map-container">
+            <div class="map" id="map"></div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/webmapping.js') }}"></script>
+{% endblock %}
